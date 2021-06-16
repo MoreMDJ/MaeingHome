@@ -1,0 +1,17 @@
+server:
+  port: 8887
+spring:
+  messages:
+    basename: i18n/messages
+  redis:
+    host: 172.16.5.14
+    port: 6379
+    password: Du4REFfFwptvYj6F
+    timeout: 3000
+    database: 10
+    lettuce:
+      pool:
+        min-idle: 1
+        max-idle: 100
+        max-active: 1000
+        max-wait: -1ms
