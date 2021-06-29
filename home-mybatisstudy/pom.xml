@@ -13,6 +13,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.maeing</groupId>
+            <artifactId>home-launch</artifactId>
+            <version>${home.project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.maeing</groupId>
+            <artifactId>home-util</artifactId>
+            <version>${home.project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -36,11 +46,9 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.maeing</groupId>
-            <artifactId>home-tool</artifactId>
-            <version>${home.project.version}</version>
-        </dependency>
+
+
+
     </dependencies>
 
 </project>

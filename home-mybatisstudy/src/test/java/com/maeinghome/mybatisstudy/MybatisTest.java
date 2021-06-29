@@ -3,7 +3,7 @@ package com.maeinghome.mybatisstudy;
 import com.maeinghome.mybatisstudy.entity.EvaluationQuestionScore;
 import com.maeinghome.mybatisstudy.maeingpool.info.UserContextHolder;
 import com.maeinghome.mybatisstudy.mapper.EvaluationQuestionScoreMapper;
-import com.maeinghome.tool.times.SystemClock;
+import com.maeinghome.util.times.SystemClock;
 import org.apache.ibatis.datasource.pooled.PooledDataSourceFactory;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;
