@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,27 +25,35 @@ public class RediscacheApplication {
         String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
         for (int i = 0; i < beanDefinitionNames.length; i++) {
             String beanDefinitionName = beanDefinitionNames[i];
-            System.out.println("自动配置bean: " + (i+1) +"、" + beanDefinitionName);
+            System.out.println("自动配置bean: " + (i + 1) + "、" + beanDefinitionName);
         }
     }
-    @Autowired
+
+    @Resource
     private ICacheService cacheService;
 
     @RequestMapping("/index")
-    public String selectOne(String name ,String tel){
-        return cacheService.selectOne(name,tel);
+    public String selectOne(String name, String tel) {
+        return cacheService.selectOne(name, tel);
     }
 
     @RequestMapping("/index/day")
-    public String selectDayOne(String name ,String tel){
-        return cacheService.selectDayOne(name,tel);
+    public String selectDayOne(String name, String tel) {
+        return cacheService.selectDayOne(name, tel);
     }
+
     @RequestMapping("/index/updateone")
-    public String updateOne(String name ,String tel){
-        return cacheService.updateOne(name,tel);
+    public String updateOne(String name, String tel) {
+        return cacheService.updateOne(name, tel);
     }
+
     @RequestMapping("/index/updateall")
-    public String updateAll(String name ,String tel){
+    public String updateAll(String name, String tel) {
         return cacheService.updateAll();
+    }
+
+    @RequestMapping("/index/user/{id}")
+    public String update(String name, String tel, @PathVariable String id) {
+        return id;
     }
 }

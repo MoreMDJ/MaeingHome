@@ -16,7 +16,7 @@
 
     <artifactId>home-cloud</artifactId>
     <name>${project.artifactId}</name>
-    <version>${home.project.version}</version>
+    <version>${maeing-home.version}</version>
     <packaging>pom</packaging>
 
     <dependencyManagement>

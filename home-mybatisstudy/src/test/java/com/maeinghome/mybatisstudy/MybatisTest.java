@@ -19,6 +19,10 @@ import java.sql.*;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class MybatisTest {
 
@@ -28,7 +32,8 @@ public class MybatisTest {
     private static final String MYSQL_PASSWORD = "T9VjQUAIDJHrfdwA";
 
     public static void main(String[] args) throws Throwable {
-        initMybatis(null);
+//        initMybatis(null);
+        StringContains();
     }
 
     public static void initMybatis(String[] args) throws IOException {
@@ -81,5 +86,51 @@ public class MybatisTest {
 
     public static void testSpringBoot(){
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+    }
+
+    public static void StringContains(){
+        System.out.println("1231".contains("1231"));
+    }
+
+    public static void StringBuilderTest(){
+        StringBuilder sb = new StringBuilder(3);
+        sb.append("abc");
+        sb.append("def");
+        sb.setLength(7);
+        System.out.println(sb.toString());
+
+    }
+
+    public void threah(){
+        new Thread();
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(10,200, 20,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5));
+
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                60L, TimeUnit.SECONDS,
+                new SynchronousQueue<Runnable>());
+        for (int i = 0; i < 100; i++) {
+            MyTask task = new MyTask(i);
+            threadPoolExecutor.execute(task);
+        }
+
+    }
+
+    class MyTask implements Runnable {
+        private int taskNum;
+
+        public MyTask(int num) {
+            this.taskNum = num;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("正在执行task "+taskNum);
+            try {
+                Thread.currentThread().sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("task "+taskNum+"执行完毕");
+        }
     }
 }

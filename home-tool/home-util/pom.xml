@@ -11,15 +11,8 @@
 
     <artifactId>home-util</artifactId>
     <name>${project.artifactId}</name>
-    <version>${home.project.version}</version>
+    <version>${maeing-home.version}</version>
     <packaging>jar</packaging>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-    </dependencies>
 
 
 </project>

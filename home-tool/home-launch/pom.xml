@@ -11,7 +11,7 @@
 
     <artifactId>home-launch</artifactId>
     <name>${project.artifactId}</name>
-    <version>${home.project.version}</version>
+    <version>${maeing-home.version}</version>
     <packaging>jar</packaging>
 
     <dependencies>

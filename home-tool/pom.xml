@@ -17,6 +17,7 @@
     <modules>
         <module>home-util</module>
         <module>home-launch</module>
+        <module>home-security</module>
     </modules>
 
 

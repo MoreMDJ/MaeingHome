@@ -1,14 +1,13 @@
 package com.maeinghome.util.api;
 
 import com.maeinghome.util.constant.MaeingConstant;
-import org.springframework.lang.Nullable;
 import lombok.Data;
-import org.springframework.util.ObjectUtils;
+import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Optional;
 
 @Data
+@ToString
 public class R<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,16 +58,6 @@ public class R<T> implements Serializable {
         this.success = ResultCode.SUCCESS.code.equals(code);
     }
 
-    public static boolean isSuccess(@Nullable R<?> result) {
-        return (Boolean) Optional.ofNullable(result).map((x) -> {
-            return ObjectUtils.nullSafeEquals(ResultCode.SUCCESS.code, x.code);
-        }).orElse(Boolean.FALSE);
-    }
-
-    public static boolean isNotSuccess(@Nullable R<?> result) {
-        return !isSuccess(result);
-    }
-
     public static <T> R<T> data(T data) {
         return data(data, MaeingConstant.DEFAULT_MESSAGE_SUCCESS);
     }
@@ -112,4 +101,5 @@ public class R<T> implements Serializable {
     public static <T> R<T> status(boolean flag) {
         return flag ? success(MaeingConstant.DEFAULT_MESSAGE_SUCCESS) : fail(MaeingConstant.DEFAULT_MESSAGE_FAILURE);
     }
+
 }

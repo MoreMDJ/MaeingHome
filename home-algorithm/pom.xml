@@ -11,7 +11,7 @@
 
     <artifactId>home-algorithm</artifactId>
     <name>home-algorithm</name>
-    <version>${home.project.version}</version>
+    <version>${maeing-home.version}</version>
     <packaging>jar</packaging>
 
 
