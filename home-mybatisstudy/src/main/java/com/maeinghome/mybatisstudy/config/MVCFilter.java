@@ -17,7 +17,7 @@ public class MVCFilter implements Filter {
         System.out.printf(serverName);
         int i = serverName.indexOf(".");
         String substring = serverName.substring(0, i);
-        if(substring != null){
+        if (substring != null) {
             UserContextHolder.userName.set(substring);
         }
         filterChain.doFilter(servletRequest, servletResponse);

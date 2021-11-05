@@ -16,6 +16,7 @@
         <module>home-cloud</module>
         <module>home-tool</module>
         <module>home-algorithm</module>
+        <module>home-thread</module>
     </modules>
 
     <properties>
