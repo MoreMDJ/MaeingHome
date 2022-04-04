@@ -25,12 +25,12 @@ public class R<T> implements Serializable {
     /**
      * 返回的信息
      */
-    private String  msg;
+    private String msg;
 
     /**
      * 返回的数据
      */
-    private T       data;
+    private T data;
 
     public R() {
     }

@@ -1,4 +1,5 @@
 package com.maeinghome.rediscache.config;
+
 import com.maeinghome.rediscache.RedisKeySerializer;
 import com.maeinghome.rediscache.utils.RedisUtil;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;

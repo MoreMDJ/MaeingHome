@@ -73,17 +73,15 @@ public final class Sequence {
      * 用mask防止溢出:位与运算保证计算的结果范围始终是 0-4095
      **/
     private final static long SEQUENCE_MASK = ~(-1L << SEQUENCE_BITS);
-
+    private static byte LAST_IP = 0;
     private final long workerId;
     private final long dataCenterId;
-    private long sequence = 0L;
-    private long lastTimestamp = -1L;
-
-    private static byte LAST_IP = 0;
     private final boolean clock;
     private final long timeOffset;
     private final boolean randomSequence;
     private final ThreadLocalRandom tlr = ThreadLocalRandom.current();
+    private long sequence = 0L;
+    private long lastTimestamp = -1L;
 
     public Sequence(long dataCenterId) {
         this(dataCenterId, 0x000000FF & getLastIPAddress(), false, 5L, false);
@@ -115,6 +113,29 @@ public final class Sequence {
         this.clock = clock;
         this.timeOffset = timeOffset;
         this.randomSequence = randomSequence;
+    }
+
+    /**
+     * 用IP地址最后几个字节标示
+     * <p>
+     * eg:192.168.1.30->30
+     *
+     * @return last IP
+     */
+    public static byte getLastIPAddress() {
+        if (LAST_IP != 0) {
+            return LAST_IP;
+        }
+
+        try {
+            InetAddress inetAddress = InetAddress.getLocalHost();
+            byte[] addressByte = inetAddress.getAddress();
+            LAST_IP = addressByte[addressByte.length - 1];
+        } catch (Exception e) {
+            throw new RuntimeException("Unknown Host Exception", e);
+        }
+
+        return LAST_IP;
     }
 
     /**
@@ -205,29 +226,6 @@ public final class Sequence {
      */
     private long timeGen() {
         return clock ? SystemClockEnum.INSTANCE.currentTimeMillis() : System.currentTimeMillis();
-    }
-
-    /**
-     * 用IP地址最后几个字节标示
-     * <p>
-     * eg:192.168.1.30->30
-     *
-     * @return last IP
-     */
-    public static byte getLastIPAddress() {
-        if (LAST_IP != 0) {
-            return LAST_IP;
-        }
-
-        try {
-            InetAddress inetAddress = InetAddress.getLocalHost();
-            byte[] addressByte = inetAddress.getAddress();
-            LAST_IP = addressByte[addressByte.length - 1];
-        } catch (Exception e) {
-            throw new RuntimeException("Unknown Host Exception", e);
-        }
-
-        return LAST_IP;
     }
 
 }

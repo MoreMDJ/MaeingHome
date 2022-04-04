@@ -23,6 +23,7 @@ public enum ResultCode implements IResultCode {
         this.code = code;
         this.message = message;
     }
+
     @Override
     public String getMessage() {
         return null;

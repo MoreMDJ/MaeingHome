@@ -28,7 +28,7 @@ public class CacheUsedAspect {
     }
 
     @Before("execution(* org.springframework.cache.Cache.get(*))")
-    public void cacheUsingBefore(JoinPoint joinPoint){
+    public void cacheUsingBefore(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         Signature signature = joinPoint.getSignature();
         Object target = joinPoint.getTarget();

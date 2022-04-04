@@ -6,10 +6,10 @@ public class BubbleSort implements Sort {
 
     @Override
     public void sort(Comparable[] data) {
-        for (int i = data.length - 1; i >= 0; i--){
-            for (int j = 0; j < i; j++){
-                if(greater(data[j], data[j+1])){
-                    exchange(data,j,j+1);
+        for (int i = data.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (greater(data[j], data[j + 1])) {
+                    exchange(data, j, j + 1);
                 }
             }
         }

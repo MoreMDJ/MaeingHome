@@ -47,12 +47,12 @@ public class INetUtils {
             InetAddress candidateAddress = null;
             Enumeration ifaces = NetworkInterface.getNetworkInterfaces();
 
-            while(ifaces.hasMoreElements()) {
-                NetworkInterface iface = (NetworkInterface)ifaces.nextElement();
+            while (ifaces.hasMoreElements()) {
+                NetworkInterface iface = (NetworkInterface) ifaces.nextElement();
                 Enumeration inetAddrs = iface.getInetAddresses();
 
-                while(inetAddrs.hasMoreElements()) {
-                    InetAddress inetAddr = (InetAddress)inetAddrs.nextElement();
+                while (inetAddrs.hasMoreElements()) {
+                    InetAddress inetAddr = (InetAddress) inetAddrs.nextElement();
                     if (!inetAddr.isLoopbackAddress()) {
                         if (inetAddr.isSiteLocalAddress()) {
                             return inetAddr;

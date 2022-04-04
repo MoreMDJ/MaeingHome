@@ -1,7 +1,6 @@
 package com.maeinghome.algorithm;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Optional;
 
 public class weight {
@@ -27,19 +26,20 @@ public class weight {
         System.out.println("args = " + Integer.toBinaryString(n));
         System.out.println((n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1);
 
-        int a,b;
-        a = 10;b=-11;
+        int a, b;
+        a = 10;
+        b = -11;
         System.out.println((a >> 31) ^ (b >> 31));
-        Double[] w = {0.1,0.4,0.5};
+        Double[] w = {0.1, 0.4, 0.5};
         weight weight = new weight();
-        Double u,s,l;
-        Boolean uB,sB,lB;
+        Double u, s, l;
+        Boolean uB, sB, lB;
         u = null;
         s = 122d;
         l = 10d;
-        uB= true;
-        sB= false;
-        lB= true;
+        uB = true;
+        sB = false;
+        lB = true;
         Double score = weight.calculateWeightScore(u, uB, s, sB, l, lB, w);
         Double scoreQuick = weight.calculateWeightScoreQuick(u, uB, s, sB, l, lB, w);
 
@@ -60,13 +60,13 @@ public class weight {
         return divide.doubleValue();
     }
 
-    private Double[] initParam(Double u,Boolean isU, Double s, Boolean isS, Double l, Boolean isL, Double[] w){
+    private Double[] initParam(Double u, Boolean isU, Double s, Boolean isS, Double l, Boolean isL, Double[] w) {
         Double[] weights = new Double[3];
         Double zeroW = 0.0;
-        weights[0] = isU ? w[0] : 0*(zeroW +=w[0]);
-        weights[1] = isS ? w[1] : 0*(zeroW +=w[1]);
-        weights[2] = isL ? w[2] : 0*(zeroW +=w[2]);
-        if(zeroW.compareTo(0d) > 0) {
+        weights[0] = isU ? w[0] : 0 * (zeroW += w[0]);
+        weights[1] = isS ? w[1] : 0 * (zeroW += w[1]);
+        weights[2] = isL ? w[2] : 0 * (zeroW += w[2]);
+        if (zeroW.compareTo(0d) > 0) {
             weights[0] = isU ? zeroW * (this.divide(weights[0], 1.0 - zeroW)) + weights[0] : 0.0;
             weights[1] = isS ? zeroW * (this.divide(weights[1], 1.0 - zeroW)) + weights[1] : 0.0;
             weights[2] = isL ? zeroW * (this.divide(weights[2], 1.0 - zeroW)) + weights[2] : 0.0;
@@ -75,11 +75,11 @@ public class weight {
     }
 
 
-    private Double calculateWeightScoreQuick(Double u,Boolean isU, Double s, Boolean isS, Double l, Boolean isL, Double[] weightsO) {
+    private Double calculateWeightScoreQuick(Double u, Boolean isU, Double s, Boolean isS, Double l, Boolean isL, Double[] weightsO) {
         s = Optional.ofNullable(s).orElse(0d);
         u = Optional.ofNullable(u).orElse(0d);
         l = Optional.ofNullable(l).orElse(0d);
-        Double[] weights = initParam( u, isU,  s,  isS,  l,  isL,  weightsO);
+        Double[] weights = initParam(u, isU, s, isS, l, isL, weightsO);
         Double d = u * weights[0] + s * weights[1] + l * weights[2];
         BigDecimal bigDecimal = new BigDecimal(d.toString());
         return bigDecimal.setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
@@ -88,17 +88,17 @@ public class weight {
     /**
      * 根据权重算总得分
      *
-     * @param u			上级
-     * @param isU		上级是否参与权重
-     * @param s			同级
-     * @param isS		同级是否参与权重
-     * @param l			下级
-     * @param isL		下级是否参与权重
-     * @param weightsO	getWeight 方法
-     * @author dema
+     * @param u        上级
+     * @param isU      上级是否参与权重
+     * @param s        同级
+     * @param isS      同级是否参与权重
+     * @param l        下级
+     * @param isL      下级是否参与权重
+     * @param weightsO getWeight 方法
      * @return
+     * @author dema
      */
-    private Double calculateWeightScore(Double u,Boolean isU, Double s, Boolean isS, Double l, Boolean isL, Double[] weightsO) {
+    private Double calculateWeightScore(Double u, Boolean isU, Double s, Boolean isS, Double l, Boolean isL, Double[] weightsO) {
         if (s == null) {
             s = 0d;
         }
@@ -148,12 +148,12 @@ public class weight {
                     weights[0] = 0d;
                 } else if (postion == 1) {
                     //weights[0] = weights[0] / (weights[0] + weights[2]);
-                    weights[0] = this.divide(weights[0],weights[0] + weights[2]);
+                    weights[0] = this.divide(weights[0], weights[0] + weights[2]);
                     weights[2] = 1 - weights[0];
                     weights[1] = 0d;
                 } else if (postion == 2) {
                     //weights[1] = weights[1] / (weights[1] + weights[0]);
-                    weights[1] =this.divide(weights[1], weights[1] + weights[0]);
+                    weights[1] = this.divide(weights[1], weights[1] + weights[0]);
 
                     weights[0] = 1 - weights[1];
                     weights[2] = 0d;

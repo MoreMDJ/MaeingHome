@@ -55,10 +55,10 @@ public class MybatisTest {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
         PooledDataSourceFactory pdsf = new PooledDataSourceFactory();
         Properties properties = new Properties();
-        properties.setProperty("driver",MYSQL_DRIVER);
-        properties.setProperty("url",MYSQL_URL);
-        properties.setProperty("username",MYSQL_USERNAME);
-        properties.setProperty("password",MYSQL_PASSWORD);
+        properties.setProperty("driver", MYSQL_DRIVER);
+        properties.setProperty("url", MYSQL_URL);
+        properties.setProperty("username", MYSQL_USERNAME);
+        properties.setProperty("password", MYSQL_PASSWORD);
         pdsf.setProperties(properties);
         DataSource dataSource = pdsf.getDataSource();
         Connection connection = dataSource.getConnection();
@@ -72,27 +72,28 @@ public class MybatisTest {
         System.out.println();
         Class.forName(MYSQL_DRIVER);
         Properties properties = new Properties();
-        properties.setProperty("driver",MYSQL_DRIVER);
-        properties.setProperty("url",MYSQL_URL);
-        properties.setProperty("username",MYSQL_USERNAME);
-        properties.setProperty("password",MYSQL_PASSWORD);
-        DriverManager.getConnection(MYSQL_URL,properties);
+        properties.setProperty("driver", MYSQL_DRIVER);
+        properties.setProperty("url", MYSQL_URL);
+        properties.setProperty("username", MYSQL_USERNAME);
+        properties.setProperty("password", MYSQL_PASSWORD);
+        DriverManager.getConnection(MYSQL_URL, properties);
     }
-    public static void testMethod(){
+
+    public static void testMethod() {
         DotMethod method = new DotMethod();
         System.out.println(method.noGetter);
         System.out.println(method.hasGetter);
     }
 
-    public static void testSpringBoot(){
+    public static void testSpringBoot() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
     }
 
-    public static void StringContains(){
+    public static void StringContains() {
         System.out.println("1231".contains("1231"));
     }
 
-    public static void StringBuilderTest(){
+    public static void StringBuilderTest() {
         StringBuilder sb = new StringBuilder(3);
         sb.append("abc");
         sb.append("def");
@@ -101,9 +102,9 @@ public class MybatisTest {
 
     }
 
-    public void threah(){
+    public void threah() {
         new Thread();
-        ThreadPoolExecutor tpe = new ThreadPoolExecutor(10,200, 20,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5));
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(10, 200, 20, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5));
 
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                 60L, TimeUnit.SECONDS,
@@ -124,13 +125,13 @@ public class MybatisTest {
 
         @Override
         public void run() {
-            System.out.println("正在执行task "+taskNum);
+            System.out.println("正在执行task " + taskNum);
             try {
                 Thread.currentThread().sleep(4000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("task "+taskNum+"执行完毕");
+            System.out.println("task " + taskNum + "执行完毕");
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.maeinghome.mybatisstudy.maeingpool;
 
-import org.apache.ibatis.datasource.DataSourceFactory;
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
 
 import javax.sql.DataSource;

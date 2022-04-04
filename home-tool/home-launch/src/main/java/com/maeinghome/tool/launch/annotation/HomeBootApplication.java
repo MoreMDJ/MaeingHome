@@ -30,10 +30,10 @@ import java.lang.annotation.*;
         )}
 )
 public @interface HomeBootApplication {
-        @AliasFor(
-                annotation = ComponentScan.class,
-                attribute = "basePackages"
-        )
-        String[] scanBasePackages() default {};
+    @AliasFor(
+            annotation = ComponentScan.class,
+            attribute = "basePackages"
+    )
+    String[] scanBasePackages() default {};
 }
 

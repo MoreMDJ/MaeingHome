@@ -1,10 +1,8 @@
 package com.maeinghome.tool.launch;
 
-import org.springframework.boot.ResourceBanner;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.*;
-import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.util.Assert;
 
 import java.util.Properties;

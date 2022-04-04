@@ -12,7 +12,7 @@ public class DateSourceController {
     TestService testService;
 
     @RequestMapping("/index")
-    public String index(String name){
+    public String index(String name) {
 
         return testService.getName();
     }

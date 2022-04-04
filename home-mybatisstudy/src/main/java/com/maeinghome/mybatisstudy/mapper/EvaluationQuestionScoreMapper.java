@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface EvaluationQuestionScoreMapper {
-	List<EvaluationQuestionScore> findAll(@Param("id") Long id);
-	String findTest();
+    List<EvaluationQuestionScore> findAll(@Param("id") Long id);
+
+    String findTest();
 }

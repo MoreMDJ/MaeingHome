@@ -1,8 +1,6 @@
 package com.maeinghome.security.handler;
 
-import com.maeinghome.util.api.IResultCode;
 import com.maeinghome.util.api.R;
-import com.maeinghome.util.api.ResultCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -26,7 +24,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Se
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter printWriter = response.getWriter();
-        printWriter.write(R.fail(HttpStatus.UNAUTHORIZED.value(),HttpStatus.UNAUTHORIZED.getReasonPhrase()).toString());
+        printWriter.write(R.fail(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()).toString());
         printWriter.flush();
     }
 }
