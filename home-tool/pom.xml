@@ -18,6 +18,8 @@
         <module>home-util</module>
         <module>home-launch</module>
         <module>home-security</module>
+        <module>home-generator</module>
+        <module>home-test</module>
     </modules>
 
 

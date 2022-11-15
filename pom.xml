@@ -17,6 +17,8 @@
         <module>home-tool</module>
         <module>home-algorithm</module>
         <module>home-thread</module>
+        <module>home-table</module>
+        <module>home-finance</module>
     </modules>
 
     <properties>
@@ -37,6 +39,7 @@
         <mybatis.version>3.5.0</mybatis.version>
 
         <jwt.version>0.9.1</jwt.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
 
     </properties>
 
